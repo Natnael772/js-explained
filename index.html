@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>JavaScript: High-level Overview</h1>
+    <p>
+      JavaScript is a high-level, Object-oriented, Multi-paradigm Programming
+      Language
+    </p>
+    <p>JavaScript is :</p>
+    <ul>
+      <li>
+        <span>High-level</span> :In Low level languages (e.g. C), Developer has
+        to manage resources manually. But in high-level languages(e.g. JS,
+        Python), the developer doesnot have to worry about how to manage
+        resources. JavaScript does it automatically.
+      </li>
+      <li>
+        <span>Garbage-collected</span> Here JS removes old(unused) objects from
+        memory automatically. So the developer don't have to manually clean up
+        the memory.
+      </li>
+      <li>
+        <span>Interpreted/JIT Compiled</span>:JS codes are converted into
+        machine code entirely(with out storing portable files like c++ ) at once
+        and then execute immediately.
+      </li>
+      <li>
+        <span>Multi-paradigm</span> approach of structuring code. Js supports
+        Procedural Programming(Linear programming), OOP and Functional
+        Programming.
+      </li>
+      <li>
+        <span>prototype-based OO</span> Everything in JS is an object except
+        primitive types. there is a prototype (Blueprint) that contains methods
+        of objects. So when we write objects, it inherits the methods from the
+        blueprint(prototype)
+      </li>
+      <li>
+        <span>First-class functions</span> In a language of First-class
+        functions, functions are simply treated as variables. We can pass them
+        into other functions, and return from functions. Example of passing
+        function into another function as argument: p.addEventlistener("click",
+        displayMessage)
+      </li>
+      <li>
+        <span>Dynamically-typed language</span> No data type definitions. It is
+        deterrmined at runtime. Data type is automatically changed(let x=="NN" x
+        = 10).
+      </li>
+      <li>
+        <span>Single-threaded and Non-blocking event loop</span>
+        Javascript uses event loop to handle concurrent tasks(multiple tasks
+        happening at the sae time). Event loop takes long long runnig tasks,
+        executes them in background, and puts them back in the main thread once
+        they're finished.
+      </li>
+    </ul>
+    <h2>Interpreted vs Compiled vs JIT-compiled</h2>
+    <ul>
+      <li>
+        <span>Compiled </span> here the Entire code is converted into machine
+        code at once. Then it keeps portable file and finally executes it.
+      </li>
+      <li>
+        <span>Interpreted </span>here code is converted to machine code line by
+        line. It is much slower than compiled languages.
+      </li>
+      <li>
+        <span>JIT Compiled </span>
+        here Entire code is converted into machine code (with out storing
+        portable files like c++ ) at once and then execute immediately.
+      </li>
+    </ul>
+    <h2>JavaScript Engine</h2>
+    <p>JavaScript Engine is a program that execute JavaScript code.</p>
+    <p>E.g. V8 Engine</p>
+    <p>Has 2 parts: Callstack and Heap</p>
+    <p>Callstack : is where our codes are executed.</p>
+    <p>Heap: is where objects are stored.</p>
+
+    <h2>Modern JIT Compilation step of JavaScript</h2>
+    <ol>
+      <li>
+        <span>Parsing</span>: first the code is parsed into a data structure
+        called AST(Abstract Syntax Structure or tree). Also checks if there is
+        syntax error.
+      </li>
+      <li>
+        <span>Compilation</span> the code will be converted to machine code with
+        JIT.
+      </li>
+      <li>
+        <span>Execution</span> the code will be executed. It happens in call
+        Stack.
+      </li>
+      <li>
+        <span>Optimization strategy</span> JavaScript first creates a very
+        unoptimized version of machine code in the beginning to start executing
+        as fast as possible. In the background, this code is optimized and
+        recompiled during the already running prgram execution. It can be done
+        multiple times.
+      </li>
+      <p>
+        After each optimization, the unoptimized code is simply swapped by the
+        optimized one without ever stopping execution. It makes modern engines
+        (V8) fast.
+      </p>
+    </ol>
+    <h2>JavaScript Runtime</h2>
+    <p>
+      is a container including all the things that we need to use
+      JavaScript(e.g. Browser). Without engine, there is no runtime.
+    </p>
+    <p>JavaScript runtime includes Engine, Web API and Callback Queue.</p>
+    <p>
+      <span>JavaScript Engine</span>: is a program that executed JavaScript
+      code.
+    </p>
+    <p>
+      <span>Web API</span> : is functionality provied to the engine. It is
+      outside of the browser but JS Engine access it on window object. It
+      includes DOM, Fetch API, Timers...
+    </p>
+    <p>
+      <span>CallBack queue</span> data structure containing all callback
+      functions. Example: callback function from DOM event listener. When user
+      clicks on a button, the callback function is put on callback queue in JS
+      Engine. Then when the callstack is empty, the callback function is passed
+      to the callstack so it can be executed. These all are handled by event
+      loop. Basically, event loop takes callback functions from callback queue,
+      and puts it to callstack for execution./p>
+    </p>
+    <h2>Execution Contexts and the call stack</h2>
+    <p>Steps:</p>
+    <ul>
+      <li>First it is compiled so it becomes ready to be executed</li>
+      <li>
+        <span>Creation of global execution content for top-level code</span>
+        Top-level code is global or which is outside function. e.g const name =
+        "Natty" declared globally. Execution context is an environment in which
+        a piece of javascript is executed. It stores all the necessary
+        information for some code to be executed. There is exactly one/default
+        global execution content(EC) top-level code.
+      </li>
+      <li><span>Execution of top-level code (inside global EC)</span></li>
+      <li>
+        <span>Execution of functions and waiting for callbacks</span> For each
+        function call, one new execution context is created.
+      </li>
+      <li>The all together make the call stack</li>
+    </ul>
+    <h3>What's inside execution context</h3>
+    <ol>
+      <li>
+        <span>Variable environment</span>: - let, const, var declarations ,
+        -functions, -argument object
+      </li>
+      <li>
+        <span>Scope chain</span>references to variables located outside the
+        function
+      </li>
+      <li><span>this keyword</span></li>
+      <p>Argument object and this keyword can't be in arrow functions</p>
+    </ol>
+    <h3>Call Stack explained</h3>
+    <p>
+      It is where our JavaScript codes are executed in javascript engine. When
+      there are multiple functions(functions calling another functions),
+      Execution contexts get stacked on top of each other, to keep track of
+      where we are in the execution and which to execute next. The one on the
+      top of the stack is the one currently running. Once it finishes execution,
+      it will be out of the callstack and the previous will be execued. In
+      JavaScript callstack, order of execution willnot be lost.
+    </p>
+  </body>
+</html>

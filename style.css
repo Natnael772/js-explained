@@ -1,0 +1,13 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+span {
+  color: #1098ad;
+}
+h1,
+h2 {
+  /* color: #ef3724; */
+  color: purple;
+  font-weight: bold;
+}
